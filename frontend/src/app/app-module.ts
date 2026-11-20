@@ -1,6 +1,5 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Header } from './template/header/header';
@@ -16,6 +15,7 @@ import { SharedModule } from './shared/shared-module';
 import { provideHttpClient } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { AtualizarProduto } from './components/produtos/atualizar-produto/atualizar-produto';
+import { provideSweetAlert2, SwalComponent, SwalDirective } from "@sweetalert2/ngx-sweetalert2";
 registerLocaleData(localePt);
 
 
@@ -33,13 +33,19 @@ registerLocaleData(localePt);
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    SwalComponent,
+    SwalDirective
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     {provide: LOCALE_ID, useValue: 'pt-BR'},
     provideHttpClient(),
-    provideToastr() // Toastr providers
+    provideToastr(), // Toastr providers
+    provideSweetAlert2({
+      fireOnInit: false,
+      dismissOnDestroy: true,
+    }),
   ],
   bootstrap: [App]
 })

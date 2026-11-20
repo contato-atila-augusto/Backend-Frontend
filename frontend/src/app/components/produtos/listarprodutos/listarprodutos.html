@@ -30,7 +30,16 @@
                     >
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="btn btn-danger btn-sm ms-2">
+                    <button class="btn btn-danger ml-2" [swal]="{
+                        title: 'ATENÇÃO!!!'
+                        text: 'Deseja realmente excluir o produto: ' + prod.nome + '?',
+                        showDenyButton: true,
+                        denyButtonText: 'Não',
+                        confirmButtonText: 'Sim, excluir',
+                        icon: 'warning'
+                    }"
+                    (confirm)="deletar(prod)"
+                    >
                         <i class="fas fa-trash"></i>
                     </button>
                 </td>

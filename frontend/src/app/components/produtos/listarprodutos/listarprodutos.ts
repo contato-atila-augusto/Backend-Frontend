@@ -31,4 +31,15 @@ export class Listarprodutos {
     });
   }
 
+  deletar(produto: IProduto): void{
+    this.produtosService.excluir(produto.id!).subscribe(() =>{
+      this.produtosService.exibirMensagem(
+        'SISTEMA',
+        `${produto.nome} foi ecluido com sucesso!`,
+        'toast-error'
+      );
+      this.carregarProdutos();
+    })
+  }
+
 }
